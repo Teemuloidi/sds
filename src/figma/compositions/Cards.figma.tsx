@@ -173,7 +173,7 @@ figma.connect(TestimonialCard, "<FIGMA_CARDS_TESTIMONIAL_CARD>", {
     <TestimonialCard
       heading={headingProps.heading}
       src={placeholder}
-      title={avatarBlockProps.name}
+      title={avatarBlockProps.title}
       username={avatarBlockProps.username}
     />
   ),
