@@ -165,7 +165,7 @@ figma.connect(TestimonialCard, "<FIGMA_CARDS_TESTIMONIAL_CARD>", {
       heading: figma.string("Text"),
     }),
     avatarBlockProps: figma.nestedProps("Avatar Block", {
-      name: figma.string("Title"),
+      title: figma.string("Title"),
       username: figma.string("Description"),
     }),
   },
@@ -173,7 +173,7 @@ figma.connect(TestimonialCard, "<FIGMA_CARDS_TESTIMONIAL_CARD>", {
     <TestimonialCard
       heading={headingProps.heading}
       src={placeholder}
-      name={avatarBlockProps.name}
+      title={avatarBlockProps.title}
       username={avatarBlockProps.username}
     />
   ),
