@@ -174,19 +174,19 @@ export function pricingPlanToPricingCardProps(
   const action = isActive
     ? "Current Plan"
     : levelUpgrade
-      ? `Upgrade to ${plan.name}`
+      ? `Upgrade to ${plan.title}`
       : levelDowngrade
-        ? `Downgrade to ${plan.name}`
+        ? `Downgrade to ${plan.title}`
         : goAnnual
           ? `Go Annual`
           : goMonthly
             ? `Go Monthly`
-            : `Select ${plan.name}`;
+            : `Select ${plan.title}`;
   return {
     sku: plan.sku,
     interval: plan.interval,
     list: plan.features,
-    heading: plan.name,
+    heading: plan.title,
     priceCurrency: plan.currency,
     action,
     actionDisabled: isActive,
@@ -197,7 +197,7 @@ export function pricingPlanToPricingCardProps(
     onAction: () =>
       setCurrentPlan
         ? setCurrentPlan(plan)
-        : console.log(`Selected ${plan.name}`),
+        : console.log(`Selected ${plan.title}`),
   };
 }
 
@@ -318,14 +318,14 @@ export function productToProductInfoCardProps(
   product: Product,
 ): ProductInfoCardProps {
   return {
-    heading: product.name,
+    heading: product.title,
     price: product.price.toString(),
     description: product.description,
     rating: product.rating,
     asset: (
       <Image
         src={product.imageUrl}
-        alt={product.name}
+        alt={product.title}
         aspectRatio="4-3"
         className="product-info-card-asset"
       />
@@ -335,7 +335,7 @@ export function productToProductInfoCardProps(
 
 export type ProductInfoCardProps = Pick<CardProps, "asset"> & {
   /**
-   * The product name
+   * The product title
    */
   heading: string;
   /**
@@ -424,9 +424,9 @@ export type ReviewCardProps = {
    */
   body: string;
   /**
-   * The name of the reviewer
+   * The title of the reviewer
    */
-  name: string;
+  title: string;
   /**
    * The date of the review
    */
@@ -444,7 +444,7 @@ export function ReviewCard({
   stars,
   title,
   body,
-  name,
+  title,
   date,
   src,
 
@@ -461,8 +461,8 @@ export function ReviewCard({
         <TextHeading>{title}</TextHeading>
         <TextSmall>{body}</TextSmall>
       </Flex>
-      <AvatarBlock title={name} description={date}>
-        <Avatar size="large" src={src} initials={name.charAt(0)} />
+      <AvatarBlock title={title} description={date}>
+        <Avatar size="large" src={src} initials={title.charAt(0)} />
       </AvatarBlock>
     </Card>
   );
@@ -515,9 +515,9 @@ export type TestimonialCardProps = {
    */
   heading: string;
   /**
-   * The name of the author
+   * The title of the author
    */
-  name: string;
+  title: string;
   /**
    * The username of the author
    */
@@ -537,7 +537,7 @@ export type TestimonialCardProps = {
  */
 export function TestimonialCard({
   heading,
-  name,
+  title,
   username,
   initials,
   src,
@@ -546,7 +546,7 @@ export function TestimonialCard({
   return (
     <Card {...props} padding="600" direction="vertical" variant="stroke">
       <TextHeading>{heading}</TextHeading>
-      <AvatarBlock title={name} description={`@${username}`}>
+      <AvatarBlock title={title} description={`@${username}`}>
         <Avatar size="large" src={src} initials={initials} />
       </AvatarBlock>
     </Card>
